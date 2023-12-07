@@ -151,54 +151,10 @@ public class ConnectionSimulation extends Simulation {
 
   private ScenarioBuilder scn = scenario("ConnectionSimulation")
     .exec(
-      http("request_0")
+      http("Bouton de connexion")
         .get(uri1 + "?cta_guid=b93858d7-552d-47be-9de1-d37aa98cbad6&placement_guid=439e2dcc-f7ac-4538-9326-655aa649a267&portal_id=2820264&redirectUrl=https%3A%2F%2Fonepoint.wd3.myworkdayjobs.com%2Ffr-FR%2Fonepoint%3Futm_campaign%3DSortie%2520page%2520nous%2520rejoindre%26utm_source%3Dsite%2520web%26utm_medium%3Dworkday%26utm_content%3DCTA%2520nous%2520rejoindre%2520%2528corps%2520de%2520page%2529")
         .headers(headers_0)
-        .resources(
-          http("request_1")
-            .get(uri3 + "?plate=BMT216A")
-            .headers(headers_1),
-          http("request_2")
-            .get(uri2 + "/generic/fr-FR.json")
-            .headers(headers_2),
-          http("request_3")
-            .get(uri2 + "/cxs_job_posting_details/fr-FR.json")
-            .headers(headers_2),
-          http("request_4")
-            .get(uri2 + "/cxs_search_labels/fr-FR.json")
-            .headers(headers_2),
-          http("request_5")
-            .get("/wday/cxs/onepoint/onepoint/userprofile")
-            .headers(headers_5),
-          http("request_6")
-            .get("/wday/cxs/onepoint/videoLabels")
-            .headers(headers_6),
-          http("request_7")
-            .get("/wday/cxs/onepoint/onepoint/approot")
-            .headers(headers_6),
-          http("request_8")
-            .get("/wday/cxs/onepoint/onepoint/sidebar")
-            .headers(headers_6),
-          http("request_9")
-            .get("/wday/cxs/onepoint/onepoint/sidebar")
-            .headers(headers_6),
-          http("request_10")
-            .get("/onepoint/assets/logo")
-            .headers(headers_10),
-          http("request_11")
-            .get("/onepoint/assets/banner")
-            .headers(headers_10),
-          http("request_12")
-            .get("/wday/cxs/onepoint/onepoint/sidebarimage/c7d837cbe4dd01963790aca52502ee00")
-            .headers(headers_10),
-          http("request_13")
-            .get("/onepoint/assets/banner")
-            .headers(headers_13),
-          http("request_14")
-            .post("/wday/cxs/onepoint/onepoint/jobs")
-            .headers(headers_14)
-            .body(RawFileBody("computerdatabase/connectionsimulation/0014_request.json"))
-        ).check(status().saveAs("code")).check(currentLocation().saveAs("currentLocation"))
+        .check(status().saveAs("code")).check(currentLocation().saveAs("currentLocation"))
     ).exec(session -> {
             try {
               GatlingResultsToDatabase.insertTestData(Timestamp.from(Instant.now()),
@@ -208,49 +164,18 @@ public class ConnectionSimulation extends Simulation {
             }
             return session;
     })
-    .pause(3)
+    .pause(1)
     .exec(
-      http("request_15")
-        .get("/onepoint/assets/banner")
-        .headers(headers_13)
-        .resources(
-          http("request_16")
-            .get("/onepoint/assets/banner")
-            .headers(headers_13)
-        )
-    )
-    .pause(2)
-    .exec(
-      http("request_17")
-        .get("/onepoint/assets/banner")
-        .headers(headers_13)
-    )
-    .pause(5)
-    .exec(
-      http("request_18")
-        .get("/onepoint/assets/logo")
-        .headers(headers_10)
-        .resources(
-          http("request_19")
-            .get("/wday/cxs/onepoint/onepoint/account/configuration")
-            .headers(headers_6)
-        )
-    )
-    .pause(8)
-    .exec(
-      http("request_20")
+      http("Connexion")
         .post("/fr-FR/onepoint/login")
         .headers(headers_20)
         .formParam("password", "Epfonepoint2023!")
         .formParam("username", "epfonepoint@gmail.com")
-        .resources(
-          http("request_21")
-            .get("/wday/cxs/onepoint/onepoint/userprofile")
-            .headers(headers_5),
-          http("request_22")
-            .get("/onepoint/assets/banner")
-            .headers(headers_13)
-        ).check(status().saveAs("code")).check(currentLocation().saveAs("currentLocation"))
+        .check(status().is(200)) // Add this line to check if the response status is 200
+        .check(css("input[type='submit']").notExists())
+        .check(css("input[data-automation-id='email'][disabled]").notExists())
+        .check(css("input[data-automation-id='password'][disabled]").notExists())
+        .check(status().saveAs("code")).check(currentLocation().saveAs("currentLocation"))
     ).exec(session -> {
             try {
               GatlingResultsToDatabase.insertTestData(Timestamp.from(Instant.now()),
