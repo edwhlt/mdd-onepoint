@@ -7,8 +7,8 @@ public class GatlingResultsToDatabase {
 
     // JDBC URL, username, and password of PostgreSQL server
     private static final String JDBC_URL = "jdbc:postgresql://localhost:5432/mdd";
-    private static final String JDBC_USER = "mdd";
-    private static final String JDBC_PASSWORD = "mdd";
+    private static final String JDBC_USER = "onepoint_user";
+    private static final String JDBC_PASSWORD = "1234";
 
     public static Connection connection() throws SQLException, ClassNotFoundException {
         try {
@@ -27,7 +27,7 @@ public class GatlingResultsToDatabase {
         // SQL query to insert data into the test_results table
         Connection connection = connection();
 
-        String insertQuery = "INSERT INTO test_results (scenario_name, request_name, request_count, min_response_time, max_response_time, mean_response_time, status) " +
+        String insertQuery = "INSERT INTO table_onepoint (scenario_name, request_name, request_count, min_response_time, max_response_time, mean_response_time, status) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
@@ -52,7 +52,7 @@ public class GatlingResultsToDatabase {
         // SQL query to insert data into the test_results table
         Connection connection = connection();
 
-        String insertQuery = "INSERT INTO logs (\"timestamp\", \"fetch\", code_http, step) VALUES (?, ?, ?, ?)";
+        String insertQuery = "INSERT INTO table_onepoint (\"timestamp\", \"fetchs\", code_http, step) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
             preparedStatement.setTimestamp(1, timestamp);
