@@ -155,7 +155,8 @@ public class ConnectionSimulation extends Simulation {
         .get(uri1 + "?cta_guid=b93858d7-552d-47be-9de1-d37aa98cbad6&placement_guid=439e2dcc-f7ac-4538-9326-655aa649a267&portal_id=2820264&redirectUrl=https%3A%2F%2Fonepoint.wd3.myworkdayjobs.com%2Ffr-FR%2Fonepoint%3Futm_campaign%3DSortie%2520page%2520nous%2520rejoindre%26utm_source%3Dsite%2520web%26utm_medium%3Dworkday%26utm_content%3DCTA%2520nous%2520rejoindre%2520%2528corps%2520de%2520page%2529")
         .headers(headers_0)
         .check(status().saveAs("code")).check(currentLocation().saveAs("currentLocation"))
-    ).exec(session -> {
+    )
+    /*.exec(session -> {
             try {
               GatlingResultsToDatabase.insertTestData(Timestamp.from(Instant.now()),
                       session.get("currentLocation"), session.get("code"), "bouton de connexion");
@@ -163,7 +164,7 @@ public class ConnectionSimulation extends Simulation {
               throw new RuntimeException(e);
             }
             return session;
-    })
+    })*/
     .pause(1)
     .exec(
       http("Connexion")
@@ -176,7 +177,8 @@ public class ConnectionSimulation extends Simulation {
         .check(css("input[data-automation-id='email'][disabled]").notExists())
         .check(css("input[data-automation-id='password'][disabled]").notExists())
         .check(status().saveAs("code")).check(currentLocation().saveAs("currentLocation"))
-    ).exec(session -> {
+    )
+    /*.exec(session -> {
             try {
               GatlingResultsToDatabase.insertTestData(Timestamp.from(Instant.now()),
                       session.get("currentLocation"), session.get("code"), "requete de connexion");
@@ -185,7 +187,8 @@ public class ConnectionSimulation extends Simulation {
               throw new RuntimeException(e);
             }
             return session;
-          });
+          })
+          */;
 
   {
 	  setUp(scn.injectOpen(atOnceUsers(1))).protocols(httpProtocol);
