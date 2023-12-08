@@ -9,8 +9,7 @@ public class Engine {
     GatlingPropertiesBuilder props = new GatlingPropertiesBuilder()
       .resourcesDirectory(IDEPathHelper.mavenResourcesDirectory.toString())
       .resultsDirectory(IDEPathHelper.resultsDirectory.toString())
-      .binariesDirectory(IDEPathHelper.mavenBinariesDirectory.toString())
-            .simulationClass(GopWorkday.class.getName()).simulationClass(ConnectionSimulation.class.getName());
+      .binariesDirectory(IDEPathHelper.mavenBinariesDirectory.toString());
 
     Gatling.fromMap(props.build());
   }
