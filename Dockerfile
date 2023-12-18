@@ -8,4 +8,4 @@ WORKDIR /app
 COPY . /app
 
 # Set the default command to run Gatling tests
-CMD ["mvn", "gatling:test", "-Dgatling.simulationClass=io.gatling.gop.ApplySimulation", "-DGEAPHITE_HOST=influxdb", "-DGEAPHITE_PORT=2003", "-DSCRIPT_NAME=test"]
+CMD ["mvn", "gatling:test", "-Dgatling.simulationClass=io.gatling.gop.ConnectionSimulation", "-DGRAPHITE_HOST=influxdb", "-DGRAPHITE_PORT=2003", "-DSCRIPT_NAME=test"]
