@@ -13,6 +13,8 @@ services:
     volumes:
       - ./influxdb.conf:/etc/influxdb/influxdb.conf
       - influxdb-data:/var/lib/influxdb
+    networks:
+      - gatling
   grafana:
     container_name: grafana
     image: grafana/grafana
@@ -24,7 +26,12 @@ services:
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin # Remplacez par votre propre mot de passe
       - GF_USERS_ALLOW_SIGN_UP=false
+    networks:
+      - gatling
 
 volumes:
   influxdb-data:
   grafana-data:
+
+networks:
+  gatling:
