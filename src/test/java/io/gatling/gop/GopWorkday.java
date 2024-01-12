@@ -6,7 +6,6 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
 
-import db.GatlingResultsToDatabase;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 import io.gatling.javaapi.jdbc.*;
@@ -46,17 +45,7 @@ public class GopWorkday extends Simulation {
         .check(css("a[href*='rejoindre-onepoint'").exists())
         .check(substring("Architecte des grandes transformations").exists())
         .check(status().saveAs("code")).check(currentLocation().saveAs("currentLocation"))
-    )
-    .exec(session -> {
-      try {
-        GatlingResultsToDatabase.insertTestData(Timestamp.from(Instant.now()),
-                session.get("currentLocation"), session.get("code"), "rejoindre onepoint");
-
-      } catch (SQLException | ClassNotFoundException e) {
-        throw new RuntimeException(e);
-      }
-      return session;
-    });
+    );
   {
 	  setUp(scn.injectOpen(atOnceUsers(1))).protocols(httpProtocol);
   }

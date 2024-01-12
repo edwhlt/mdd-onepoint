@@ -150,39 +150,20 @@ public class ConnectionSimulation extends Simulation {
         .headers(headers_0)
         .check(status().saveAs("code")).check(currentLocation().saveAs("currentLocation"))
     )
-    /*.exec(session -> {
-            try {
-              GatlingResultsToDatabase.insertTestData(Timestamp.from(Instant.now()),
-                      session.get("currentLocation"), session.get("code"), "bouton de connexion");
-            } catch (SQLException | ClassNotFoundException e) {
-              throw new RuntimeException(e);
-            }
-            return session;
-    })*/
     .pause(1)
     .exec(
       http("Connexion")
         .post("/fr-FR/onepoint/login")
         .headers(headers_20)
-        .formParam("password", "Epfonepoint2023!")
+        //.formParam("password", "Epfonepoint2023!")
+              .formParam("password", "zefrgthyjuyutyrtgerz")
         .formParam("username", "epfonepoint@gmail.com")
         .check(status().is(200)) // Add this line to check if the response status is 200
         .check(css("input[type='submit']").notExists())
         .check(css("input[data-automation-id='email'][disabled]").notExists())
         .check(css("input[data-automation-id='password'][disabled]").notExists())
         .check(status().saveAs("code")).check(currentLocation().saveAs("currentLocation"))
-    )
-    /*.exec(session -> {
-            try {
-              GatlingResultsToDatabase.insertTestData(Timestamp.from(Instant.now()),
-                      session.get("currentLocation"), session.get("code"), "requete de connexion");
-
-            } catch (SQLException | ClassNotFoundException e) {
-              throw new RuntimeException(e);
-            }
-            return session;
-          })
-          */;
+    );
 
   {
 	  setUp(scn.injectOpen(atOnceUsers(1))).protocols(httpProtocol);
