@@ -39,7 +39,7 @@ public class GopWorkday extends Simulation {
 
   private ScenarioBuilder scn = scenario("GopWorkday")
     .exec(
-      http("00:GET Home Page")
+      http("Page d'accueil")
         .get("/fr/")
         .headers(headers_0)
         .check(css("a[href*='rejoindre-onepoint'").exists())

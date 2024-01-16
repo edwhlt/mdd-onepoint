@@ -31,98 +31,6 @@ public class ConnectionSimulation extends Simulation {
     Map.entry("upgrade-insecure-requests", "1")
   );
   
-  private Map<CharSequence, String> headers_1 = Map.ofEntries(
-    Map.entry("Accept", "*/*"),
-    Map.entry("Cache-Control", "no-cache"),
-    Map.entry("Pragma", "no-cache"),
-    Map.entry("Sec-Fetch-Dest", "script"),
-    Map.entry("Sec-Fetch-Mode", "no-cors"),
-    Map.entry("Sec-Fetch-Site", "cross-site"),
-    Map.entry("sec-ch-ua", "Microsoft Edge\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows")
-  );
-  
-  private Map<CharSequence, String> headers_2 = Map.ofEntries(
-    Map.entry("accept", "*/*"),
-    Map.entry("origin", "https://onepoint.wd3.myworkdayjobs.com"),
-    Map.entry("pragma", "no-cache"),
-    Map.entry("sec-ch-ua", "Microsoft Edge\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows"),
-    Map.entry("sec-fetch-dest", "empty"),
-    Map.entry("sec-fetch-mode", "cors"),
-    Map.entry("sec-fetch-site", "cross-site")
-  );
-  
-  private Map<CharSequence, String> headers_5 = Map.ofEntries(
-    Map.entry("Accept", "application/xml, application/json"),
-    Map.entry("Cache-Control", "no-cache"),
-    Map.entry("Content-Type", "application/x-www-form-urlencoded"),
-    Map.entry("Pragma", "no-cache"),
-    Map.entry("Sec-Fetch-Dest", "empty"),
-    Map.entry("Sec-Fetch-Mode", "cors"),
-    Map.entry("Sec-Fetch-Site", "same-origin"),
-    Map.entry("X-CALYPSO-CSRF-TOKEN", "46919679-2b30-401c-b6a0-62240ae5b6c9"),
-    Map.entry("sec-ch-ua", "Microsoft Edge\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows")
-  );
-  
-  private Map<CharSequence, String> headers_6 = Map.ofEntries(
-    Map.entry("Accept", "application/json"),
-    Map.entry("Accept-Language", "fr-FR"),
-    Map.entry("Cache-Control", "no-cache"),
-    Map.entry("Content-Type", "application/x-www-form-urlencoded"),
-    Map.entry("Pragma", "no-cache"),
-    Map.entry("Sec-Fetch-Dest", "empty"),
-    Map.entry("Sec-Fetch-Mode", "cors"),
-    Map.entry("Sec-Fetch-Site", "same-origin"),
-    Map.entry("X-CALYPSO-CSRF-TOKEN", "46919679-2b30-401c-b6a0-62240ae5b6c9"),
-    Map.entry("sec-ch-ua", "Microsoft Edge\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows")
-  );
-  
-  private Map<CharSequence, String> headers_10 = Map.ofEntries(
-    Map.entry("Cache-Control", "no-cache"),
-    Map.entry("Pragma", "no-cache"),
-    Map.entry("Sec-Fetch-Dest", "image"),
-    Map.entry("Sec-Fetch-Mode", "no-cors"),
-    Map.entry("Sec-Fetch-Site", "same-origin"),
-    Map.entry("sec-ch-ua", "Microsoft Edge\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows")
-  );
-  
-  private Map<CharSequence, String> headers_13 = Map.ofEntries(
-    Map.entry("Cache-Control", "no-cache"),
-    Map.entry("Origin", "https://onepoint.wd3.myworkdayjobs.com"),
-    Map.entry("Pragma", "no-cache"),
-    Map.entry("Sec-Fetch-Dest", "image"),
-    Map.entry("Sec-Fetch-Mode", "cors"),
-    Map.entry("Sec-Fetch-Site", "same-origin"),
-    Map.entry("sec-ch-ua", "Microsoft Edge\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows")
-  );
-  
-  private Map<CharSequence, String> headers_14 = Map.ofEntries(
-    Map.entry("Accept", "application/json"),
-    Map.entry("Accept-Language", "fr-FR"),
-    Map.entry("Cache-Control", "no-cache"),
-    Map.entry("Content-Type", "application/json"),
-    Map.entry("Origin", "https://onepoint.wd3.myworkdayjobs.com"),
-    Map.entry("Pragma", "no-cache"),
-    Map.entry("Sec-Fetch-Dest", "empty"),
-    Map.entry("Sec-Fetch-Mode", "cors"),
-    Map.entry("Sec-Fetch-Site", "same-origin"),
-    Map.entry("X-CALYPSO-CSRF-TOKEN", "46919679-2b30-401c-b6a0-62240ae5b6c9"),
-    Map.entry("sec-ch-ua", "Microsoft Edge\";v=\"119\", \"Chromium\";v=\"119\", \"Not?A_Brand\";v=\"24"),
-    Map.entry("sec-ch-ua-mobile", "?0"),
-    Map.entry("sec-ch-ua-platform", "Windows")
-  );
-  
   private Map<CharSequence, String> headers_20 = Map.ofEntries(
     Map.entry("Accept", "application/xml, application/json"),
     Map.entry("Cache-Control", "no-cache"),
@@ -137,10 +45,6 @@ public class ConnectionSimulation extends Simulation {
   );
   
   private String uri1 = "https://cta-service-cms2.hubspot.com/ctas/v2/public/cs/preview/click";
-  
-  private String uri2 = "https://wd3.myworkdaycdn.com/wday/asset/candidate-experience-jobs/2023.46.30/compiled-lang";
-  
-  private String uri3 = "https://wd3.myworkday.com/wday/asset/client-analytics/uxInsights.min.js";
 
   private ScenarioBuilder scn = scenario("ConnectionSimulation")
     .exec(
@@ -156,7 +60,7 @@ public class ConnectionSimulation extends Simulation {
         .post("/fr-FR/onepoint/login")
         .headers(headers_20)
         //.formParam("password", "Epfonepoint2023!")
-              .formParam("password", "zefrgthyjuyutyrtgerz")
+              .formParam("password", "Epfonepoint2023!")
         .formParam("username", "epfonepoint@gmail.com")
         .check(status().is(200)) // Add this line to check if the response status is 200
         .check(css("input[type='submit']").notExists())
